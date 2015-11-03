@@ -5,25 +5,25 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FouMemorizerApi", "FouMemorizerApi\FouMemorizerApi.csproj", "{D5276BF6-F09C-40B7-AB93-378A6AF57D30}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1(1)", "http://localhost:4015", "{0C8FFA04-20AD-4205-BA8F-DEF0223E3303}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "FouMemorizer", "http://localhost:5735", "{33565007-E457-46A3-A266-3E7CDD172731}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_4015"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Documents\Visual Studio 2013\WebSites\WebSite1\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4015\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_5735"
+		Debug.AspNetCompiler.PhysicalPath = "FouMemorizer\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5735\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_4015"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Documents\Visual Studio 2013\WebSites\WebSite1\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4015\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_5735"
+		Release.AspNetCompiler.PhysicalPath = "FouMemorizer\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5735\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\..\Documents\Visual Studio 2013\WebSites\WebSite1\"
+		SlnRelativePath = "FouMemorizer\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
@@ -37,10 +37,10 @@ Global
 		{D5276BF6-F09C-40B7-AB93-378A6AF57D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5276BF6-F09C-40B7-AB93-378A6AF57D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5276BF6-F09C-40B7-AB93-378A6AF57D30}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C8FFA04-20AD-4205-BA8F-DEF0223E3303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C8FFA04-20AD-4205-BA8F-DEF0223E3303}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C8FFA04-20AD-4205-BA8F-DEF0223E3303}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C8FFA04-20AD-4205-BA8F-DEF0223E3303}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{33565007-E457-46A3-A266-3E7CDD172731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33565007-E457-46A3-A266-3E7CDD172731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33565007-E457-46A3-A266-3E7CDD172731}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{33565007-E457-46A3-A266-3E7CDD172731}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
