@@ -19,7 +19,7 @@ namespace FouMemorizer.Controllers
         // GET: api/Memos
         public IQueryable<Memo> GetMemos()
         {
-            return db.Memos;
+            return db.Memos.OrderByDescending(m => m.CreationDate);
         }
 
         // GET: api/Memos/5
@@ -74,7 +74,7 @@ namespace FouMemorizer.Controllers
         [ResponseType(typeof(Memo))]
         public IHttpActionResult PostMemo(Memo memo)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || memo == null)
             {
                 return BadRequest(ModelState);
             }
