@@ -22,3 +22,15 @@
     text-align:center;
     margin-bottom: 20px;
 }
+
+.login-dropdown {
+    width:300px;
+    padding:20px;
+    padding-bottom:0;
+}
+
+.form-inscription .form-group, .form-inscription .text-danger {
+    max-width: 450px;
+    margin:0 auto;
+    margin-bottom: 15px;
+}

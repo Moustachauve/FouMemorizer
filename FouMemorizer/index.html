@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="FouMemorizer" ng-controller="ApplicationController">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Fou Memorizer</title>
+    <title>{{currentPage.title}} - Fou Memorizer</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet" />
 
@@ -14,11 +14,12 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
 
-    <script src="js/app.js"></script>
-    <script src="js/Navigation/NavigationController.js"></script>
+    <script src="js/Application/app.js"></script>
+    <script src="js/Application/ApplicationController.js"></script>
+    <script src="js/Auth/AuthController.js"></script>
     <script src="js/Memo/MemoController.js"></script>
 </head>
-<body ng-app="FouMemorizer" ng-controller="NavigationController">
+<body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -28,10 +29,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Fou Memorizer</a>
+                <a class="navbar-brand" ng-click="navigate('Index')" href="">Fou Memorizer</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Connexion <span class="caret"></span></a>
+                        <div class="dropdown-menu login-dropdown" ng-include="'js/Auth/Login.html'"></div>
+                    </li>
+                    <li><a href="" ng-click="navigate('Register')">S'inscrire</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -41,7 +49,7 @@
     </div>
 
 
-    <div class="container" ng-include="currentTemplate">
+    <div class="container" ng-include="currentPage.url">
     </div>
 </body>
 </html>
