@@ -1,12 +1,14 @@
 ﻿<div ng-controller="AuthController">
     <div class="form-group">
-        <input type="text" placeholder="Adresse Email" class="form-control input-sm" id="inputError" />
+        <input type="text" placeholder="Adresse Email" class="form-control input-sm" id="email" ng-model="user.Email" />
+        <span class="help-block"></span>
     </div>
     <div class="form-group">
-        <input type="password" placeholder="Mot de passe" class="form-control input-sm" name="password" id="Password1" />
+        <input type="password" placeholder="Mot de passe" class="form-control input-sm" name="password" id="password" ng-model="user.Password" />
+        <span class="help-block"></span>
     </div>
     <div class="form-group text-right">
-        <button type="submit" class="btn btn-success btn-sm">Se connecter</button>
+        <button type="submit" class="btn btn-success btn-sm" ng-click="login(user)">Se connecter</button>
     </div>
 </div>
 

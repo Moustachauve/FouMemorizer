@@ -33,12 +33,15 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav"></ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" ng-show="!isLoggedIn()">
                     <li>
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">Connexion <span class="caret"></span></a>
                         <div class="dropdown-menu login-dropdown" ng-include="'js/Auth/Login.html'"></div>
                     </li>
                     <li><a href="" ng-click="navigate('Register')">S'inscrire</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn()">
+                    <li><a href="" ng-click="logout()">Déconnexion</a></li>
                 </ul>
             </div>
         </div>

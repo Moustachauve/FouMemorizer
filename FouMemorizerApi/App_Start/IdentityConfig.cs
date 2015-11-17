@@ -30,7 +30,7 @@ namespace FouMemorizer
             {
                 RequiredLength = 4,
                 RequireNonLetterOrDigit = false,
-                RequireDigit = true,
+                RequireDigit = false,
                 RequireLowercase = false,
                 RequireUppercase = false,
             };
