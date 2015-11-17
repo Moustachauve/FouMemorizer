@@ -18,6 +18,7 @@
     <script src="js/Application/ApplicationController.js"></script>
     <script src="js/Auth/AuthController.js"></script>
     <script src="js/Memo/MemoController.js"></script>
+    <script src="js/Chat/ChatController.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -32,7 +33,9 @@
                 <a class="navbar-brand" ng-click="navigate('Index')" href="">Fou Memorizer</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="" ng-click="navigate('Chat')">Chat room!</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right" ng-show="!isLoggedIn()">
                     <li>
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">Connexion <span class="caret"></span></a>

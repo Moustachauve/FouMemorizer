@@ -9,6 +9,7 @@ function ApplicationController($scope, $rootScope) {
     $scope.pages = [
         { name: "index", title: "Accueil", url: "/js/Memo/MemoList.html" },
         { name: "register", title: "S'inscrire", url: "/js/Auth/Register.html" },
+        { name: "chat", title: "Chat Room!", url: "/js/Chat/Chatroom.html" },
     ];
 
     $scope.currentPage = $scope.pages[0];
@@ -54,6 +55,10 @@ function ApplicationController($scope, $rootScope) {
 
     $rootScope.isLoggedIn = function () {
         return localStorage.getItem("sToken");
+    }
+
+    $rootScope.getEmail = function () {
+        return localStorage.getItem("sEmail");
     }
 }
 

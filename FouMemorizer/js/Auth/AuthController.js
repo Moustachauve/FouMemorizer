@@ -68,6 +68,7 @@ function AuthController($scope, $rootScope) {
             console.log(data);
 
             localStorage.setItem("sToken", data.access_token);
+            localStorage.setItem("sEmail", data.userName);
             $scope.$apply();
             $rootScope.refreshMemo();
             $rootScope.navigate("Index");
