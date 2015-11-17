@@ -10,6 +10,7 @@ function MemoController($scope,  $rootScope) {
     $scope.getMemos = function () {
         $rootScope.startLoading();
         $.ajax({
+            beforeSend: function (xhr) { xhr.setRequestHeader("Authorization", "Bearer " + $rootScope.isLoggedIn()) },
             method: "GET",
             url: "http://localhost:3791/api/Memos",
         })
@@ -27,6 +28,7 @@ function MemoController($scope,  $rootScope) {
     $scope.addMemo = function (memo) {
         $rootScope.startLoading();
         $.ajax({
+            beforeSend: function (xhr) { xhr.setRequestHeader("Authorization", "Bearer " + $rootScope.isLoggedIn()) },
             method: "POST",
             url: "http://localhost:3791/api/Memos",
             data: memo
@@ -48,6 +50,7 @@ function MemoController($scope,  $rootScope) {
     $scope.deleteMemo = function (memo) {
         $rootScope.startLoading();
         $.ajax({
+            beforeSend: function (xhr) { xhr.setRequestHeader("Authorization", "Bearer " + $rootScope.isLoggedIn()) },
             method: "DELETE",
             url: "http://localhost:3791/api/Memos/" + memo.MemoID,
         })
@@ -63,6 +66,12 @@ function MemoController($scope,  $rootScope) {
         });
     }
 
+    $rootScope.refreshMemo = function () {
+        $scope.serverError = false;
+        $scope.memos = [];
 
-    $scope.getMemos();
+        $scope.getMemos();
+    }
+
+    $rootScope.refreshMemo();
 }

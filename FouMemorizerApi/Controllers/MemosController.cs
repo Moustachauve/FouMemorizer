@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FouMemorizer.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FouMemorizer.Controllers
 {
@@ -17,61 +18,16 @@ namespace FouMemorizer.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Memos
+        [Authorize]
         public IQueryable<Memo> GetMemos()
         {
-            return db.Memos.OrderByDescending(m => m.CreationDate);
-        }
-
-        // GET: api/Memos/5
-        [ResponseType(typeof(Memo))]
-        public IHttpActionResult GetMemo(int id)
-        {
-            Memo memo = db.Memos.Find(id);
-            if (memo == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(memo);
-        }
-
-        // PUT: api/Memos/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutMemo(int id, Memo memo)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != memo.MemoID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(memo).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MemoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            string currentUserId = User.Identity.GetUserId();
+            return db.Memos.Where(m => m.UserID == currentUserId).OrderByDescending(m => m.CreationDate);
         }
 
         // POST: api/Memos
         [ResponseType(typeof(Memo))]
+        [Authorize]
         public IHttpActionResult PostMemo(Memo memo)
         {
             if (!ModelState.IsValid || memo == null)
@@ -79,7 +35,12 @@ namespace FouMemorizer.Controllers
                 return BadRequest(ModelState);
             }
 
-			memo.CreationDate = DateTime.Now;
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == currentUserId);
+
+            memo.User = user;
+            memo.CreationDate = DateTime.Now;
+
             db.Memos.Add(memo);
             db.SaveChanges();
 
@@ -88,12 +49,20 @@ namespace FouMemorizer.Controllers
 
         // DELETE: api/Memos/5
         [ResponseType(typeof(Memo))]
+        [Authorize]
         public IHttpActionResult DeleteMemo(int id)
         {
             Memo memo = db.Memos.Find(id);
             if (memo == null)
             {
                 return NotFound();
+            }
+
+            string currentUserId = User.Identity.GetUserId();
+
+            if (memo.UserID != currentUserId)
+            {
+                return Unauthorized();
             }
 
             db.Memos.Remove(memo);

@@ -5,7 +5,6 @@
 function AuthController($scope, $rootScope) {
 
     $scope.registerError = "";
-    $rootScope.token = localStorage.getItem("sToken");
 
     $scope.register = function (registerForm) {
 
@@ -68,9 +67,9 @@ function AuthController($scope, $rootScope) {
             $rootScope.stopLoading();
             console.log(data);
 
-            $rootScope.token = data.access_token;
-            localStorage.setItem("sToken", $rootScope.token);
+            localStorage.setItem("sToken", data.access_token);
             $scope.$apply();
+            $rootScope.refreshMemo();
             $rootScope.navigate("Index");
 
         }).fail(function (data) {
@@ -92,14 +91,19 @@ function AuthController($scope, $rootScope) {
         });
     }
 
-    $rootScope.isLoggedIn = function () {
-        return $rootScope.token;
-    }
-
-    $rootScope.logout = function() {
-        localStorage.removeItem("sToken");
-        $rootScope.token = null;
-        $rootScope.navigate("Index");
+    $rootScope.logout = function () {
+        $rootScope.startLoading();
+        $.ajax({
+            beforeSend: function (xhr) { xhr.setRequestHeader("Authorization", "Bearer " + $rootScope.isLoggedIn()) },
+            method: "POST",
+            url: "http://localhost:3791/api/Account/Logout",
+        })
+        .done(function () {
+            $rootScope.stopLoading();
+            localStorage.removeItem("sToken");
+            $rootScope.navigate("Index");
+            $scope.$apply();
+        });
     }
 
 }

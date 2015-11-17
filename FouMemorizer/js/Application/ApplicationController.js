@@ -51,5 +51,9 @@ function ApplicationController($scope, $rootScope) {
         console.log(location.hash.substr(2, location.hash.length));
         $rootScope.navigate(location.hash.substr(2, location.hash.length));
     });
+
+    $rootScope.isLoggedIn = function () {
+        return localStorage.getItem("sToken");
+    }
 }
 
